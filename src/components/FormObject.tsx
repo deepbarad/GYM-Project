@@ -1,31 +1,89 @@
+const genderOption = [
+  { value: "male", label: "Male" },
+  { value: "female", label: "Female" },
+  { value: "other", label: "Other" },
+];
+const queOption = [
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+];
+
 export const joinFormObject = [
   {
     title: "First Name",
     name: "firstName",
     type: "text",
-    placeholder: "First Name",
   },
   {
     title: "Middle Name",
     name: "middleName",
     type: "text",
-    placeholder: "Middle Name",
   },
   {
     title: "Last Name",
     name: "lastName",
     type: "text",
-    placeholder: "Last Name",
   },
   {
     title: "Email",
     name: "email",
     type: "text",
-    placeholder: "Email",
   },
   {
-    title: "Select Your Gender",
+    title: "Contact No.",
+    name: "contactNo",
+    type: "text",
+  },
+  {
+    title: "Data of Birth",
+    name: "dataOfBirth",
+    type: "date",
+  },
+  {
+    title: "City",
+    name: "city",
+    type: "text",
+  },
+  {
+    title: "State",
+    name: "state",
+    type: "text",
+  },
+  {
+    title: "Gender :",
+    name: "gender",
     type: "radio",
-    placeholder: "Mobile No.",
+    option: genderOption,
+    orientation: "horizontal",
+  },
+  {
+    title: "Age",
+    name: "age",
+    type: "number",
+  },
+  {
+    title: "Your Current Weight (lbs)*",
+    name: "currentWeight",
+    type: "number",
+  },
+  {
+    title: "Desired Weight (lbs)*",
+    name: "currentWeight",
+    type: "number",
+  },
+  {
+    title: "Address-1",
+    name: "address1",
+    type: "textarea",
+  },
+  {
+    title: "Address-2",
+    name: "address2",
+    type: "textarea",
+  },
+  {
+    title: "Do You Require Personal Trainer?",
+    type: "radio",
+    option: queOption,
   },
 ];
