@@ -40,22 +40,16 @@ export const joinFormObject = [
     type: "date",
   },
   {
-    title: "City",
-    name: "city",
-    type: "text",
-  },
-  {
     title: "State",
     name: "state",
     type: "text",
   },
   {
-    title: "Gender :",
-    name: "gender",
-    type: "radio",
-    option: genderOption,
-    orientation: "horizontal",
+    title: "City",
+    name: "city",
+    type: "text",
   },
+
   {
     title: "Age",
     name: "age",
@@ -72,6 +66,13 @@ export const joinFormObject = [
     type: "number",
   },
   {
+    title: "Gender :",
+    name: "gender",
+    type: "radio",
+    option: genderOption,
+    orientation: "horizontal",
+  },
+  {
     title: "Address-1",
     name: "address1",
     type: "textarea",
@@ -84,6 +85,7 @@ export const joinFormObject = [
   {
     title: "Do You Require Personal Trainer?",
     type: "radio",
+    name: "trainer",
     option: queOption,
   },
 ];

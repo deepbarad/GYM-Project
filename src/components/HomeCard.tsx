@@ -1,6 +1,5 @@
 import { Button, Image, Card, CardBody } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import { joinFormObject } from "./FormObject";
 
 function HomeCard({
   img,
@@ -63,12 +62,8 @@ function HomeCard({
                   </div>
                   <div className={BtnClass}>
                     <Button
-                      className="bg-red-700 font-semibold mt-4 "
-                      onClick={() =>
-                        navigate("/JoinForm", {
-                          state: { data: joinFormObject },
-                        })
-                      }
+                      className="bg-red-700 font-semibold mt-4"
+                      onClick={() => navigate("/JoinForm")}
                     >
                       GET STARTED TODAY
                     </Button>

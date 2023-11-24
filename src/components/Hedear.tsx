@@ -4,24 +4,22 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
   NavbarMenuItem,
   NavbarMenu,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import gymLogo from "../assets/gym Logo.png";
+import gymLogo from "../assets/Image/gym Logo.png";
+import { Link } from "react-router-dom";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "Home",
-    "About",
-    "Services",
-    "Gallery",
-    "Contact us",
-    "Log Out",
+    { pageName: "Home", pathName: "/" },
+    { pageName: "About", pathName: "/about" },
+    { pageName: "Gallery", pathName: "/gallery" },
+    { pageName: "Log Out", pathName: "/logout" },
   ];
   return (
     <div>
@@ -40,34 +38,29 @@ function Header() {
 
         <NavbarContent className="hidden sm:flex gap-4" justify="center">
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" to="/">
               Home
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" to="/about">
               About
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
-              Services
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" to="/gallery">
               Gallery
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link color="foreground" to="#">
               Contact us
             </Link>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className="hidden lg:flex">
-            <Link href="#">Login</Link>
+            <Link to="#">Login</Link>
           </NavbarItem>
           <NavbarItem>
             <Button as={Link} color="primary" href="#" variant="flat">
@@ -87,10 +80,10 @@ function Header() {
                     : "foreground"
                 }
                 className="w-full"
-                href="#"
+                to={item?.pathName}
                 size="lg"
               >
-                {item}
+                {item?.pageName}
               </Link>
             </NavbarMenuItem>
           ))}

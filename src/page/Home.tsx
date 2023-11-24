@@ -1,42 +1,32 @@
-import cardio from "../assets/cardio.jpg";
-import man from "../assets/man.jpg";
-import back from "../assets/back.jpg";
-import dumbell from "../assets/dumbele.jpg";
-import tredmil from "../assets/tredmil.jpg";
-import {
-  Card,
-  CardBody,
-  Image,
-  Tabs,
-  Tab,
-  useDisclosure,
-  Input,
-} from "@nextui-org/react";
-import Image01 from "../assets/01-Image.avif";
-import Image02 from "../assets/weight lifting.jpg";
-import Image03 from "../assets/03-cardio.webp";
-import bgImage from "../assets/bg-image.jpg";
-import trenner1 from "../assets/trenner 3.jpg";
-import trenner2 from "../assets/trenner 2.webp";
-import trenner3 from "../assets/trener 1.webp";
-import trenner4 from "../assets/trenner 4.jpg";
-import trenner5 from "../assets/femaleGym.jpg";
-import trenner6 from "../assets/trenner ledy 2.jpg";
+import cardio from "../assets/Image/cardio.jpg";
+import man from "../assets/Image/man.jpg";
+import back from "../assets/Image/back.jpg";
+import dumbell from "../assets/Image/g-5.jpg";
+import tredmil from "../assets/Image/leg.jpg";
+import { Card, CardBody, Image, Tabs, Tab } from "@nextui-org/react";
+import Image01 from "../assets/Image/01-Image.avif";
+import Image02 from "../assets/Image/weight lifting.jpg";
+import Image03 from "../assets/Image/03-cardio.webp";
+import bgImage from "../assets/Image/bg-image.jpg";
+import trenner1 from "../assets/Image/trenner 3.jpg";
+import trenner2 from "../assets/Image/trenner 2.webp";
+import trenner3 from "../assets/Image/trener 1.webp";
+import trenner4 from "../assets/Image/trenner 4.jpg";
+import trenner5 from "../assets/Image/femaleGym.jpg";
+import trenner6 from "../assets/Image/trenner ledy 2.jpg";
 import HomeCard from "../components/HomeCard";
 import WeekTable from "../components/table";
 import {
   FriColumn,
   MonColumn,
   SatColumn,
-  SunColumn,
   ThuColumn,
   TueColumn,
   WedColumn,
 } from "../components/tableObject";
-import { joinFormObject } from "../components/FormObject";
+// import { joinFormObject } from "../components/FormObject";
 
 const Home = () => {
-  const { onOpen } = useDisclosure();
   const list = [
     {
       title: "Deep Barad",

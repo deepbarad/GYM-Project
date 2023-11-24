@@ -7,9 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/react";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function WeekTable({ column }: any) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex justify-center w-[1200px]">
@@ -29,7 +31,12 @@ function WeekTable({ column }: any) {
                   <TableCell>{item.workout}</TableCell>
                   <TableCell>{item.trainers}</TableCell>
                   <TableCell>
-                    <Button color="warning">JOIN NOW</Button>
+                    <Button
+                      color="warning"
+                      onClick={() => navigate("/JoinForm")}
+                    >
+                      JOIN NOW
+                    </Button>
                   </TableCell>
                 </TableRow>
               );
