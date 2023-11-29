@@ -10,20 +10,25 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import gymLogo from "../assets/Image/gym Logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
     { pageName: "Home", pathName: "/" },
     { pageName: "About", pathName: "/about" },
     { pageName: "Gallery", pathName: "/gallery" },
-    { pageName: "Log Out", pathName: "/logout" },
+    { pageName: "Contact Us", pathName: "/contactUs" },
   ];
   return (
     <div>
-      <Navbar onMenuOpenChange={setIsMenuOpen}>
+      <Navbar
+        onMenuOpenChange={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
+        className="fixed"
+      >
         <NavbarContent>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -31,8 +36,13 @@ function Header() {
           />
           <NavbarBrand>
             {/* <AcmeLogo /> */}
-            <img src={gymLogo} alt="Gym Logo" height={70} width={70} />
-            {/* <p className="font-bold text-inherit">ACME</p> */}
+            <img
+              src={gymLogo}
+              alt="Gym Logo"
+              height={70}
+              width={70}
+              onClick={() => navigate("/")}
+            />
           </NavbarBrand>
         </NavbarContent>
 
@@ -53,18 +63,18 @@ function Header() {
             </Link>
           </NavbarItem>
           <NavbarItem>
-            <Link color="foreground" to="#">
+            <Link color="foreground" to="/contactUs">
               Contact us
             </Link>
           </NavbarItem>
         </NavbarContent>
         <NavbarContent justify="end">
-          <NavbarItem className="hidden lg:flex">
+          {/* <NavbarItem className="hidden lg:flex">
             <Link to="#">Login</Link>
-          </NavbarItem>
+          </NavbarItem> */}
           <NavbarItem>
-            <Button as={Link} color="primary" href="#" variant="flat">
-              Sign Up
+            <Button color="warning" onClick={() => navigate("/JoinForm")}>
+              Join Now
             </Button>
           </NavbarItem>
         </NavbarContent>
@@ -79,6 +89,7 @@ function Header() {
                     ? "danger"
                     : "foreground"
                 }
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="w-full"
                 to={item?.pathName}
                 size="lg"

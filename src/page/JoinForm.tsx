@@ -33,26 +33,33 @@ function JoinForm() {
       if (item.type === "number") {
         return (
           <div key={index} className="p-3">
-            <Input
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              {item.title}
+            </label>
+            <input
               type={item.type}
-              label={item.title}
               {...register(item.name)}
-              classNames={{
-                input: "border-0",
-              }}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={item.placeholder}
             />
           </div>
         );
       } else if (item.type === "text") {
         return (
           <div key={index} className="p-3">
-            <Input
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              {item.title}
+            </label>
+            <input
               type={item.type}
-              label={item.title}
               {...register(item.name)}
-              classNames={{
-                input: "border-0",
-              }}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
             />
           </div>
@@ -60,37 +67,51 @@ function JoinForm() {
       } else if (item.type === "email") {
         return (
           <div key={index} className="p-3">
-            <Input
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              {item.title}
+            </label>
+            <input
               type={item.type}
-              label={item.title}
               {...register(item.name)}
-              classNames={{
-                input: "border-0",
-              }}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={item.placeholder}
             />
           </div>
         );
       } else if (item.type === "date") {
         return (
           <div key={index} className="p-3">
-            <Input
+            <label
+              htmlFor="email"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              {item.title}
+            </label>
+            <input
               type={item.type}
-              label={item.title}
               {...register(item.name)}
-              classNames={{
-                input: "border-0",
-              }}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={item.placeholder}
             />
           </div>
         );
       } else if (item.type === "textarea") {
         return (
           <div key={index} className="p-3">
-            <Textarea
-              label={item.title}
-              className="max-w-md"
-              {...register(item.name)}
-            />
+            <label
+              htmlFor="message"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              {item.title}
+            </label>
+            <textarea
+              rows="4"
+              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={item.placeholder}
+            ></textarea>
           </div>
         );
       } else if (item.type === "radio") {
@@ -103,7 +124,7 @@ function JoinForm() {
               label={item.title}
               orientation={item.orientation}
               classNames={{
-                label: "text-black",
+                label: "text-white",
               }}
             >
               {option?.map((i: any) => {
@@ -111,7 +132,7 @@ function JoinForm() {
                   <Radio
                     value={i?.value}
                     classNames={{
-                      label: "text-black",
+                      label: "text-white",
                     }}
                   >
                     {i?.label}
@@ -148,7 +169,7 @@ function JoinForm() {
           alt="formImage"
         />
         {/* Form */}
-        <div className="xl:absolute xl:w-[1200px] z-10  backdrop-blur-2xl bg-white/20 top-52 p-5 rounded-xl">
+        <div className="xl:absolute xl:w-[1200px] z-10  backdrop-blur-2xl bg-white/20 top-32 p-5 rounded-xl">
           <div className="flex justify-center">
             <span className="font-bold text-4xl xl:text-5xl p-3">
               Personal Detail

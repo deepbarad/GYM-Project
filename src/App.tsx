@@ -5,6 +5,7 @@ import Home from "./page/Home";
 import JoinForm from "./page/JoinForm";
 import About from "./page/About";
 import Gallery from "./page/Gallery";
+import Contact from "./page/Contact";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/JoinForm" element={<JoinForm />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/contactUs" element={<Contact />} />
           </Route>
         </Routes>
       </BrowserRouter>

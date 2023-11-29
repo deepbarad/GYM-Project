@@ -24,7 +24,6 @@ import {
   TueColumn,
   WedColumn,
 } from "../components/tableObject";
-// import { joinFormObject } from "../components/FormObject";
 
 const Home = () => {
   const list = [
@@ -333,7 +332,7 @@ const Home = () => {
                 isPressable
                 onPress={() => console.log("item pressed")}
               >
-                <CardBody className="overflow-visible p-0">
+                <CardBody className="overflow-visible p-0 ">
                   <div className="flex justify-center">
                     <Image
                       shadow="sm"
@@ -343,7 +342,7 @@ const Home = () => {
                       src={item.img}
                     />
                   </div>
-                  <div className=" z-10 p-2  top-60 text-center font-extrabold text-white bg-black">
+                  <div className=" z-10 p-2 top-60 text-center font-extrabold text-white bg-black">
                     <span>{item.title}</span>
                     <p>Age: {item.age}</p>
                   </div>
