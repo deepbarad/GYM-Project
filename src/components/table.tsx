@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function WeekTable({ column }: any) {
+function WeekTable({ column, data }: any) {
   const navigate = useNavigate();
   return (
     <>
@@ -23,24 +23,24 @@ function WeekTable({ column }: any) {
             <TableColumn>Action</TableColumn>
           </TableHeader>
           <TableBody>
-            {column.map((item: any, index: number) => {
-              if (item?.title) return <span key={index}>{item?.title}</span>;
-              return (
-                <TableRow key={index}>
-                  <TableCell>{item.time}</TableCell>
-                  <TableCell>{item.workout}</TableCell>
-                  <TableCell>{item.trainers}</TableCell>
-                  <TableCell>
-                    <Button
-                      color="warning"
-                      onClick={() => navigate("/JoinForm")}
-                    >
-                      JOIN NOW
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
+            {data &&
+              data?.map((item: any, index: number) => {
+                return (
+                  <TableRow key={index}>
+                    <TableCell>{item.time}</TableCell>
+                    <TableCell>{item.workout}</TableCell>
+                    <TableCell>{item.trainerName}</TableCell>
+                    <TableCell>
+                      <Button
+                        color="warning"
+                        onClick={() => navigate("/JoinForm")}
+                      >
+                        JOIN NOW
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </div>

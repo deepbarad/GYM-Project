@@ -15,7 +15,7 @@ function Footer() {
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400 flex">
             <img src={gymLogo} alt="Gym Logo" height={50} width={50} />
             <p className="w-96 text-start mt-2">
-              Mahakaleshvar mandir near kumfarvada una -362560
+              Mahakaleshvar mandir near kumbharvada una -362560
               <div className="flex">
                 <div className="text-xl">
                   <IoIosCall />

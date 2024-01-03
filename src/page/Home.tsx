@@ -24,214 +24,79 @@ import {
   TueColumn,
   WedColumn,
 } from "../components/tableObject";
+import {
+  getAllCarousel,
+  getAllHomeContain,
+  getAllJoinTable,
+  getAllTrainers,
+} from "../apis/getApi";
+import { useEffect, useState } from "react";
+import CarouselBanner from "../utils/carousel";
 
 const Home = () => {
-  const list = [
-    {
-      title: "Deep Barad",
-      img: trenner1,
-      age: "50",
-    },
-    {
-      title: "Deanne Pandey",
-      img: trenner2,
-      age: "28 ",
-    },
-    {
-      title: "Namrata Purohit",
-      img: trenner3,
-      age: "25",
-    },
-    {
-      title: "Manish Advilkar",
-      img: trenner4,
-      age: "28",
-    },
-    {
-      title: "Payal Gidwani",
-      img: trenner5,
-      age: "24 ",
-    },
-    {
-      title: "Jency jani",
-      img: trenner6,
-      age: "27",
-    },
-  ];
+  const [Data, setData] = useState();
+  const [ImageData, setImageData] = useState();
+  const [tableData, setTableData] = useState();
+
   const tabs = [
     {
       id: "monday",
       label: "Monday",
-      content: <WeekTable column={MonColumn} />,
+      content: <WeekTable column={MonColumn} data={tableData} />,
     },
     {
       id: "tuesday",
       label: "Tuesday",
-      content: <WeekTable column={TueColumn} />,
+      content: <WeekTable column={TueColumn} data={tableData} />,
     },
     {
       id: "wednesday",
       label: "WednesDay",
-      content: <WeekTable column={WedColumn} />,
+      content: <WeekTable column={WedColumn} data={tableData} />,
     },
     {
       id: "thursday",
       label: "Thursday",
-      content: <WeekTable column={ThuColumn} />,
+      content: <WeekTable column={ThuColumn} data={tableData} />,
     },
     {
       id: "friday",
       label: "Friday",
-      content: <WeekTable column={FriColumn} />,
+      content: <WeekTable column={FriColumn} data={tableData} />,
     },
     {
       id: "saturday",
       label: "Saturday",
-      content: <WeekTable column={SatColumn} />,
+      content: <WeekTable column={SatColumn} data={tableData} />,
     },
   ];
+  const getHomeContain = async () => {
+    const res = await getAllHomeContain();
+    res?.data?.map((item: any) => {
+      setData(item);
+    });
+  };
+  const getTrainers = async () => {
+    const res = await getAllTrainers();
+    setImageData(res?.data);
+  };
+
+  const getJoinTable = async (day: any) => {
+    const res = await getAllJoinTable(day);
+    setTableData(res?.data);
+  };
+
+  useEffect(() => {
+    getHomeContain();
+    getTrainers();
+  }, []);
+
   return (
     <>
       {/*-- carousel-- */}
       <div>
-        <div
-          id="default-carousel"
-          className="relative w-full mt-5"
-          data-carousel="slide"
-        >
-          {/* <!-- Carousel wrapper --> */}
-          <div className="relative h-56 overflow-hidden rounded-lg md:h-[600px]">
-            {/* <!-- Item 1 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src={cardio}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-                alt="..."
-              />
-            </div>
-            {/* <!-- Item 2 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src={man}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-                alt="..."
-              />
-            </div>
-            {/* <!-- Item 3 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src={dumbell}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-                alt="..."
-              />
-            </div>
-            {/* <!-- Item 4 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src={back}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-                alt="..."
-              />
-            </div>
-            {/* <!-- Item 5 --> */}
-            <div className="hidden duration-700 ease-in-out" data-carousel-item>
-              <img
-                src={tredmil}
-                className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 object-cover"
-                alt="..."
-              />
-            </div>
-          </div>
-          {/* <!-- Slider indicators --> */}
-          <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-            <button
-              type="button"
-              className="w-3 h-3 rounded-full"
-              aria-current="true"
-              aria-label="Slide 1"
-              data-carousel-slide-to="0"
-            ></button>
-            <button
-              type="button"
-              className="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 2"
-              data-carousel-slide-to="1"
-            ></button>
-            <button
-              type="button"
-              className="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 3"
-              data-carousel-slide-to="2"
-            ></button>
-            <button
-              type="button"
-              className="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 4"
-              data-carousel-slide-to="3"
-            ></button>
-            <button
-              type="button"
-              className="w-3 h-3 rounded-full"
-              aria-current="false"
-              aria-label="Slide 5"
-              data-carousel-slide-to="4"
-            ></button>
-          </div>
-          {/* <!-- Slider controls --> */}
-          <button
-            type="button"
-            className="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-prev
-          >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg
-                className="w-4 h-4 text-white dark:text-gray-800"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 1 1 5l4 4"
-                />
-              </svg>
-              <span className="sr-only">Previous</span>
-            </span>
-          </button>
-          <button
-            type="button"
-            className="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-next
-          >
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-              <svg
-                className="w-4 h-4 text-white dark:text-gray-800"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 6 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m1 9 4-4-4-4"
-                />
-              </svg>
-              <span className="sr-only">Next</span>
-            </span>
-          </button>
-        </div>
+        <CarouselBanner />
       </div>
-
       <div
         className="absolute 2xl:mt-[500px] xl:block xl:w-44 xl:mt-[800px]  2xl:w-64 hidden 2xl:block "
         style={{ transform: "rotate(270deg)" }}
@@ -249,12 +114,10 @@ const Home = () => {
                 className="text-3xl font-bold"
                 style={{ fontFamily: "initial" }}
               >
-                PUSH YOUR <br /> LIMITS FORWARD
+                {Data?.bannerContainTitle}
               </h5>
               <p className="font-bold text-md text-gray-500">
-                Make beautiful websites regardless of your design experience.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dignissimos, amet.
+                {Data?.bannerContain}
               </p>
             </CardBody>
           </Card>
@@ -264,8 +127,9 @@ const Home = () => {
       {/* --01-- */}
       <HomeCard
         img={Image01}
+        contain={Data?.firstContain}
         no="01"
-        title="GYM&FITNESS"
+        title={Data?.firstContainTitle}
         imgOrder="order-2"
         noOrder="order-1"
         noText="text-end"
@@ -279,7 +143,8 @@ const Home = () => {
       <HomeCard
         img={Image02}
         no="02"
-        title="GYM&FITNESS"
+        contain={Data?.secondContain}
+        title={Data?.secondContainTitle}
         imgOrder="order-1"
         noOrder="order-2"
         noText="text-start"
@@ -293,7 +158,8 @@ const Home = () => {
       <HomeCard
         img={Image03}
         no="03"
-        title="CARDIO FITNESS"
+        contain={Data?.thirdContain}
+        title={Data?.thirdContainTitle}
         imgOrder="order-2"
         noOrder="order-1"
         noText="text-end"
@@ -325,30 +191,30 @@ const Home = () => {
             <span>OUR TRAINERS</span>
           </div>
           <div className="gap-4 mt-10 grid 2xl:grid-cols-3 lg:grid-cols-3 lg:w-[60%] xl:grid-cols-3 sm:grid-cols-2 2xl:w-[35%] xl:w-[45%] sm:w-[70%] md:w-[80%]">
-            {list.map((item, index) => (
-              <Card
-                shadow="sm"
-                key={index}
-                isPressable
-                onPress={() => console.log("item pressed")}
-              >
-                <CardBody className="overflow-visible p-0 ">
-                  <div className="flex justify-center">
-                    <Image
-                      shadow="sm"
-                      radius="none"
-                      alt={item.title}
-                      className="w-full object-cover h-[250px]"
-                      src={item.img}
-                    />
-                  </div>
-                  <div className=" z-10 p-2 top-60 text-center font-extrabold text-white bg-black">
-                    <span>{item.title}</span>
-                    <p>Age: {item.age}</p>
-                  </div>
-                </CardBody>
-              </Card>
-            ))}
+            {ImageData?.map((item, index) => {
+              return (
+                <Card shadow="sm" key={index}>
+                  <CardBody className="overflow-visible p-0 ">
+                    <div className="flex justify-center">
+                      <Image
+                        shadow="sm"
+                        radius="none"
+                        alt={item.trainerName}
+                        className="w-full object-cover h-[250px]"
+                        src={
+                          "http://localhost:8000/trainersImage/" +
+                          item?.trainersImage
+                        }
+                      />
+                    </div>
+                    <div className=" z-10 p-2 top-60 text-center font-extrabold text-white bg-black">
+                      <span>{item.trainerName}</span>
+                      <p>Age: {item.age}</p>
+                    </div>
+                  </CardBody>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -362,6 +228,7 @@ const Home = () => {
             color="warning"
             radius="full"
             items={tabs}
+            onSelectionChange={(key) => getJoinTable(key)}
           >
             {(item) => (
               <Tab

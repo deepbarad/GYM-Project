@@ -43,6 +43,12 @@ function Header() {
               width={70}
               onClick={() => navigate("/")}
             />
+            <span
+              className="self-center text-xl font-extrabold sm:text-2xl whitespace-nowrap dark:text-orange-300"
+              style={{ fontFamily: "Chakra Petch" }}
+            >
+              Hari om Gym
+            </span>
           </NavbarBrand>
         </NavbarContent>
 
@@ -85,7 +91,7 @@ function Header() {
                 color={
                   index === 2
                     ? "primary"
-                    : index === menuItems.length - 1
+                    : index === menuItems?.length - 1
                     ? "danger"
                     : "foreground"
                 }

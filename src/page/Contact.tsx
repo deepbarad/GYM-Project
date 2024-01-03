@@ -2,21 +2,22 @@ import { Image } from "@nextui-org/react";
 import dumbbell from "../assets/Image/dumbbel.jpg";
 import { Card, CardBody } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
+import { addContactUs } from "../apis/postApi";
 
 function Contact() {
   const {
     register,
     handleSubmit,
-    setValue,
-    getValues,
-    control,
+    reset,
     formState: { errors },
   } = useForm({
     mode: "onChange",
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log("data", data);
+    await addContactUs(data);
+    reset();
   };
   return (
     <>
@@ -58,7 +59,7 @@ function Contact() {
                       <input
                         type="text"
                         id="website-admin"
-                        {...register("userName")}
+                        {...register("name")}
                         className="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Name"
                       />

@@ -5,6 +5,7 @@ function HomeCard({
   img,
   no,
   title,
+  contain,
   imgOrder,
   noOrder,
   noText,
@@ -46,19 +47,7 @@ function HomeCard({
                     >
                       {title}
                     </h5>
-                    <p className="md:text-xl 2xl:text-xl  ">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Reprehenderit illum et quas voluptatem aspernatur adipisci
-                      commodi aliquid exercitationem ex iste! Lorem ipsum dolor
-                      sit amet, consectetur adipisicing elit. Quibusdam, dicta.
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                      Eveniet perferendis atque facilis! Veritatis, eligendi
-                      consequatur? Nemo, animi expedita assumenda molestias
-                      placeat eligendi ut quidem nam! Accusantium, esse officiis
-                      repellendus id deserunt ipsa facilis temporibus obcaecati
-                      nisi, laborum vero at amet ex explicabo officia ratione
-                      dolorum dolore debitis rem ad rerum!
-                    </p>
+                    <p className="md:text-xl 2xl:text-xl  ">{contain}</p>
                   </div>
                   <div className={BtnClass}>
                     <Button

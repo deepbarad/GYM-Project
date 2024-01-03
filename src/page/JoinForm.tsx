@@ -15,15 +15,14 @@ import FromBGImage from "../assets/Image/formImg.avif";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { joinFormObject } from "../components/FormObject";
+import { addGymStudent } from "../apis/postApi";
 
 function JoinForm() {
   const [Data, setData] = useState();
   const {
     register,
     handleSubmit,
-    setValue,
-    getValues,
-    control,
+    reset,
     formState: { errors },
   } = useForm({
     mode: "onChange",
@@ -41,10 +40,15 @@ function JoinForm() {
             </label>
             <input
               type={item.type}
-              {...register(item.name)}
+              {...register(item?.name, { required: item?.errorMessage })}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
             />
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
       } else if (item.type === "text") {
@@ -58,10 +62,15 @@ function JoinForm() {
             </label>
             <input
               type={item.type}
-              {...register(item.name)}
+              {...register(item?.name, { required: item?.errorMessage })}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
             />
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
       } else if (item.type === "email") {
@@ -75,10 +84,15 @@ function JoinForm() {
             </label>
             <input
               type={item.type}
-              {...register(item.name)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
+              {...register(item?.name, { required: item?.errorMessage })}
             />
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
       } else if (item.type === "date") {
@@ -92,10 +106,15 @@ function JoinForm() {
             </label>
             <input
               type={item.type}
-              {...register(item.name)}
+              {...register(item?.name, { required: item?.errorMessage })}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
             />
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
       } else if (item.type === "textarea") {
@@ -111,7 +130,13 @@ function JoinForm() {
               rows="4"
               class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
+              {...register(item?.name, { required: item?.errorMessage })}
             ></textarea>
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
       } else if (item.type === "radio") {
@@ -123,6 +148,7 @@ function JoinForm() {
             <RadioGroup
               label={item.title}
               orientation={item.orientation}
+              {...register(item?.name, { required: item?.errorMessage })}
               classNames={{
                 label: "text-white",
               }}
@@ -140,6 +166,11 @@ function JoinForm() {
                 );
               })}
             </RadioGroup>
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
 
@@ -147,14 +178,25 @@ function JoinForm() {
       } else if (item.type === "checkBox") {
         return (
           <div key={index} className="p-3">
-            <Checkbox {...register(item.name)}>{item.title}</Checkbox>
+            <Checkbox
+              {...register(item?.name, { required: item?.errorMessage })}
+            >
+              {item.title}
+            </Checkbox>
+            {errors[item?.name] && (
+              <span className="text-red-600 font-bold">
+                This field is required
+              </span>
+            )}
           </div>
         );
       }
     });
   };
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     console.log("data", data);
+    await addGymStudent(data);
+    // reset();
   };
   const onChange = (key: any) => {
     setData(key);
