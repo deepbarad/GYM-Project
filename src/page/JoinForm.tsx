@@ -1,9 +1,7 @@
 import {
-  Input,
   Image,
   RadioGroup,
   Radio,
-  Textarea,
   Checkbox,
   Button,
   Dropdown,
@@ -27,7 +25,7 @@ function JoinForm() {
   } = useForm({
     mode: "onChange",
   });
-  const input = (object) => {
+  const input = (object: any) => {
     return object?.map((item: any, index: number) => {
       if (item.type === "number") {
         return (
@@ -127,8 +125,8 @@ function JoinForm() {
               {item.title}
             </label>
             <textarea
-              rows="4"
-              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              rows={4}
+              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder={item.placeholder}
               {...register(item?.name, { required: item?.errorMessage })}
             ></textarea>
@@ -196,7 +194,7 @@ function JoinForm() {
   const onSubmit = async (data: any) => {
     console.log("data", data);
     await addGymStudent(data);
-    // reset();
+    reset();
   };
   const onChange = (key: any) => {
     setData(key);

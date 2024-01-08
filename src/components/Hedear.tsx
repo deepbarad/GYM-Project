@@ -98,7 +98,6 @@ function Header() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="w-full"
                 to={item?.pathName}
-                size="lg"
               >
                 {item?.pageName}
               </Link>

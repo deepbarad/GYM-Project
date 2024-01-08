@@ -1,19 +1,8 @@
-import cardio from "../assets/Image/cardio.jpg";
-import man from "../assets/Image/man.jpg";
-import back from "../assets/Image/back.jpg";
-import dumbell from "../assets/Image/g-5.jpg";
-import tredmil from "../assets/Image/leg.jpg";
 import { Card, CardBody, Image, Tabs, Tab } from "@nextui-org/react";
 import Image01 from "../assets/Image/01-Image.avif";
 import Image02 from "../assets/Image/weight lifting.jpg";
 import Image03 from "../assets/Image/03-cardio.webp";
 import bgImage from "../assets/Image/bg-image.jpg";
-import trenner1 from "../assets/Image/trenner 3.jpg";
-import trenner2 from "../assets/Image/trenner 2.webp";
-import trenner3 from "../assets/Image/trener 1.webp";
-import trenner4 from "../assets/Image/trenner 4.jpg";
-import trenner5 from "../assets/Image/femaleGym.jpg";
-import trenner6 from "../assets/Image/trenner ledy 2.jpg";
 import HomeCard from "../components/HomeCard";
 import WeekTable from "../components/table";
 import {
@@ -25,7 +14,6 @@ import {
   WedColumn,
 } from "../components/tableObject";
 import {
-  getAllCarousel,
   getAllHomeContain,
   getAllJoinTable,
   getAllTrainers,
@@ -34,9 +22,9 @@ import { useEffect, useState } from "react";
 import CarouselBanner from "../utils/carousel";
 
 const Home = () => {
-  const [Data, setData] = useState();
-  const [ImageData, setImageData] = useState();
-  const [tableData, setTableData] = useState();
+  const [Data, setData] = useState<any>();
+  const [ImageData, setImageData] = useState<any>();
+  const [tableData, setTableData] = useState<any>();
 
   const tabs = [
     {
@@ -70,6 +58,7 @@ const Home = () => {
       content: <WeekTable column={SatColumn} data={tableData} />,
     },
   ];
+
   const getHomeContain = async () => {
     const res = await getAllHomeContain();
     res?.data?.map((item: any) => {
@@ -134,7 +123,7 @@ const Home = () => {
         noOrder="order-1"
         noText="text-end"
         noClass="text-red-600 text-7xl font-semibold top-[0px] z-10 right-3 absolute lg:relative lg:text-9xl lg:font-normal 2xl:text-9xl 2xl:relative 2xl:font-normal 2xl:top-0 "
-        h5DivCalss="mt-5 text-center 2xl:text-start flex-row justify-center 2xl:w-[800px] lg:text-start lg:w-unit-8xl"
+        h5DivClass="mt-5 text-center 2xl:text-start flex-row justify-center 2xl:w-[800px] lg:text-start lg:w-unit-8xl"
         BtnClass="flex justify-center 2xl:justify-start"
         imgClass="2xl:h-[500px] 2xl:w-[350px] lg:h-[580px] lg:w-[400px] object-cover"
       />
@@ -149,7 +138,7 @@ const Home = () => {
         noOrder="order-2"
         noText="text-start"
         noClass="text-red-600 text-7xl font-semibold top-[0px] z-10 left-3 absolute lg:font-normal lg:text-9xl lg:relative 2xl:text-9xl 2xl:relative 2xl:font-normal 2xl:top-0 "
-        h5DivCalss="mt-5 text-center 2xl:ml-4 lg:ml-4 lg:text-start 2xl:text-start flex-row justify-center 2xl:w-unit-9xl lg:w-unit-8xl"
+        h5DivClass="mt-5 text-center 2xl:ml-4 lg:ml-4 lg:text-start 2xl:text-start flex-row justify-center 2xl:w-unit-9xl lg:w-unit-8xl"
         BtnClass="flex justify-center 2xl:justify-start 2xl:ml-4"
         imgClass="2xl:h-[500px] 2xl:w-[350px] md:w-[900px] object-cover lg:w-[400px] lg:h-[580px]"
       />
@@ -164,7 +153,7 @@ const Home = () => {
         noOrder="order-1"
         noText="text-end"
         noClass="text-red-600 text-7xl font-semibold top-[0px] z-10 right-3 absolute lg:relative lg:text-9xl lg:font-normal 2xl:text-9xl 2xl:relative 2xl:font-normal 2xl:top-0 "
-        h5DivCalss="mt-5 text-center 2xl:text-start flex-row justify-center 2xl:w-unit-9xl lg:text-start lg:w-unit-8xl"
+        h5DivClass="mt-5 text-center 2xl:text-start flex-row justify-center 2xl:w-unit-9xl lg:text-start lg:w-unit-8xl"
         BtnClass="flex justify-center 2xl:justify-start"
         imgClass="2xl:h-[500px] 2xl:w-[350px] md:w-[900px] object-cover lg:w-[400px] lg:h-[580px]"
       />
@@ -191,7 +180,7 @@ const Home = () => {
             <span>OUR TRAINERS</span>
           </div>
           <div className="gap-4 mt-10 grid 2xl:grid-cols-3 lg:grid-cols-3 lg:w-[60%] xl:grid-cols-3 sm:grid-cols-2 2xl:w-[35%] xl:w-[45%] sm:w-[70%] md:w-[80%]">
-            {ImageData?.map((item, index) => {
+            {ImageData?.map((item: any, index: any) => {
               return (
                 <Card shadow="sm" key={index}>
                   <CardBody className="overflow-visible p-0 ">
@@ -202,7 +191,8 @@ const Home = () => {
                         alt={item.trainerName}
                         className="w-full object-cover h-[250px]"
                         src={
-                          "http://localhost:8000/trainersImage/" +
+                          import.meta.env.VITE_SERVER_URL +
+                          "/trainersImage/" +
                           item?.trainersImage
                         }
                       />

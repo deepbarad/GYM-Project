@@ -10,10 +10,10 @@ function HomeCard({
   noOrder,
   noText,
   noClass,
-  h5DivCalss,
+  h5DivClass,
   BtnClass,
   imgClass,
-}) {
+}: any) {
   const navigate = useNavigate();
   return (
     <>
@@ -40,7 +40,7 @@ function HomeCard({
                       {no}
                     </span>
                   </div>
-                  <div className={h5DivCalss}>
+                  <div className={h5DivClass}>
                     <h5
                       className="text-4xl font-extrabold"
                       style={{ fontFamily: "inherit" }}

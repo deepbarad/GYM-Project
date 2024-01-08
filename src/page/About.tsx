@@ -1,13 +1,12 @@
 import { Image } from "@nextui-org/react";
-import aboutImage from "../assets/Image/about.jpg";
 import { useEffect, useState } from "react";
 import { getAllAbout } from "../apis/getApi";
 
 function About() {
-  const [Data, setData] = useState();
+  const [Data, setData] = useState<any>();
   const getAbout = async () => {
     const res = await getAllAbout();
-    const FindData = res?.data.find((obj) => obj.isActive === true);
+    const FindData = res?.data.find((obj: any) => obj.isActive === true);
     setData(FindData);
   };
   useEffect(() => {
@@ -19,7 +18,11 @@ function About() {
       <div>
         <div className="flex justify-center">
           <Image
-            src={"http://localhost:8000/aboutContainImage/" + Data?.aboutImage}
+            src={
+              import.meta.env.VITE_SERVER_URL +
+              "/aboutContainImage/" +
+              Data?.aboutImage
+            }
             className="xl:h-[600px] "
           />
         </div>

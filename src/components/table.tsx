@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function WeekTable({ column, data }: any) {
+function WeekTable({ data }: any) {
   const navigate = useNavigate();
   return (
     <>
